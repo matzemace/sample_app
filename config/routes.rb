@@ -1,6 +1,19 @@
 SampleApp::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/help"
+  get "users/new"
+ # get "static_pages/home"
+ # get "static_pages/help"
+ # get "static_pages/about"
+ # get "static_pages/contact"
+ 
+  # match '/', to: 'static_pages#home'
+  
+  root to: 'static_pages#home'  # creates: root_path => '/'; root_url  => 'http://localhost:3000/'
+  get '/help',    to: 'static_pages#help'	# not working: match instead of get
+  get '/about',   to: 'static_pages#about'
+  get '/contact', to: 'static_pages#contact'
+  
+  get '/signup', to: 'users#new' , via: [:get, :post]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
